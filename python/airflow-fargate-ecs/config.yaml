@@ -1,0 +1,5 @@
+Airflow:
+  envVariables:
+    - x : sds
+    - y : dsds
+    - z : fdfjd

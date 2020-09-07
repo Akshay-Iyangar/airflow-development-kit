@@ -70,11 +70,14 @@ class AirflowFargate(core.Construct):
         allowing individual stack to be deployed.
         """
 
-        airflow_stack = AirflowStack(self, "airflow-stack")
+        #TODO : Get this from the okta authentication itself
+        airflow_stack = AirflowStack(self, "airflow-stack",
+                                     env=core.Environment(account="973069700476", region="us-west-2"))
 
 
-        # Define an AWS Virtual Private Cloud.
-        vpc = vpc or ec2.Vpc(airflow_stack, "airflow-vpc")
+        # use this for godaddy ke liye.
+        # TODO : this looks like vpc+{account_name} confirm and make it work accordingly
+        vpc = vpc or ec2.Vpc.from_lookup(airflow_stack, "VPC", vpc_name="vpc-devprivcdp-dev-private")
 
         # Create a namespace in ECS with the above VPC and namespace.
         cloudmap_namespace_options = ecs.CloudMapNamespaceOptions(
