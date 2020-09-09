@@ -1,0 +1,27 @@
+Airflow:
+  envVariables: #Add more environment variables as needed
+    AIRFLOW__WEBSERVER__WEB_SERVER_PORT : 80
+    AIRFLOW__CORE__HOSTNAME_CALLABLE: socket:gethostname
+    AIRFLOW__CORE__LOAD_EXAMPLES : false
+    AIRFLOW__CORE__DAGS_FOLDER : /src/dags
+    AIRFLOW__CORE__EXECUTOR : CeleryExecutor
+    AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER : s3://airflow-logs/airflow/logs
+    AIRFLOW__CORE__REMOTE_LOG_CONN_ID : aws_default
+    AIRFLOW__CORE__REMOTE_LOGGING : true
+    AIRFLOW__CORE__ENCRYPT_S3_LOGS : false
+    GUNICORN_CMD_ARGS : --log-level WARNING
+    C_FORCE_ROOT : true
+    INVOKE_RUN_ECHO : 1
+    POSTGRES_USER : airflow
+    POSTGRES_PASSWORD : password
+    POSTGRES_DB : airflow
+    AWS_DEFAULT_REGION: us-west-2
+    AIRFLOW_HOME: /airflow
+
+
+
+
+
+
+
+
